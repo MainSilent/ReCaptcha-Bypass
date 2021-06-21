@@ -52,7 +52,10 @@ for index in range(len(allIframesLen)):
 if audioBtnFound:
     try:
         while True:
-            href = driver.find_element_by_id('audio-source').get_attribute('src')
+            try:
+                href = driver.find_element_by_id('audio-source').get_attribute('src')
+            except:
+                raise Exception("Unable to find audio source")
             response = requests.get(href, stream=True)
             saveFile(response,filename)
             response = audioToText(os.getcwd() + '/' + filename)
@@ -71,7 +74,7 @@ if audioBtnFound:
             if errorMsg.value_of_css_property('display') == 'none':
                 print("\033[32m"+"Success"+"\033[0m")
             else:
-                print("\033[31m"+"Failed"+"\033[0m")
+                raise Exception("Unable to solve the captcha")
             break
     except Exception as e:
         print(e)
