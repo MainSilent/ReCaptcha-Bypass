@@ -81,3 +81,5 @@ if audioBtnFound:
         print("\033[31m"+"Failed"+"\033[0m")
 else:
     print('Button not found. This should not happen.')
+
+driver.close()
