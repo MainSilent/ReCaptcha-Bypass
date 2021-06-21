@@ -76,7 +76,7 @@ if audioBtnFound:
             if errorMsg.value_of_css_property('display') == 'none':
                 print("\033[32m"+"Success"+"\033[0m")
             else:
-                raise Exception("Unable to solve the captcha")
+                raise Exception("Unable to solve captcha")
             break
     except Exception as e:
         print(e)
