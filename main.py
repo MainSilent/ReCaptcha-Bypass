@@ -74,6 +74,5 @@ if audioBtnFound:
              
     except Exception as e:
         print(e)
-        print('Caught. Need to change proxy now')
 else:
     print('Button not found. This should not happen.')
