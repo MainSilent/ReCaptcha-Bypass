@@ -1,10 +1,10 @@
 import json
+import requests
 import websocket
 
+url = ""
 result = ""
 audioPath = ""
-access_token = ""
-url = "wss://api.us-south.speech-to-text.watson.cloud.ibm.com/v1/recognize?access_token=" + access_token
 
 def on_open(ws):
 	print("WebSocket connection established")
@@ -54,13 +54,17 @@ def on_error(ws, error):
 def on_close(ws):
     print('Websocket closed')
 
-def get_token():
-	global access_token
-	
+def get_url():
+	global url
+	url = "https://speech-to-text-demo.ng.bluemix.net/api/v1/credentials"
+	response = requests.request("GET", url)
+	res = json.loads(response.text)
+	url = f"wss://{res['serviceUrl'].split('/')[-1]}/v1/recognize?access_token={res['accessToken']}"
+
 def audioToText(path):
 	global audioPath
 	audioPath = path
-	get_token()
+	get_url()
 	ws = websocket.WebSocketApp(url, on_open=on_open, on_message=on_message, on_error=on_error, on_close=on_close)
 	ws.run_forever()
 	return result
