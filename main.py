@@ -1,3 +1,6 @@
+import undetected_chromedriver as uc
+uc.install()
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
@@ -24,7 +27,7 @@ def saveFile(content,filename):
         for data in content.iter_content():
             handle.write(data)
 
-driver = webdriver.Chrome(executable_path="./chromedriver", options=option)
+driver = webdriver.Chrome(options=option)
 driver.get(byPassUrl)
 
 googleClass = driver.find_elements_by_class_name('g-recaptcha')[0]
