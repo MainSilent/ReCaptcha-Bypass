@@ -73,7 +73,6 @@ if audioBtnFound:
             else:
                  print("\033[31m"+"Failed"+"\033[0m")
             break
-             
     except Exception as e:
         print(e)
 else:
