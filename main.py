@@ -69,9 +69,9 @@ if audioBtnFound:
             inputbtn.send_keys(Keys.ENTER)
 
             time.sleep(2)
-            errorMsg = driver.find_element_by_class_name('rc-audiochallenge-error-message')
+            checkbox = driver.find_element_by_class_name('recaptcha-checkbox-border')
 
-            if errorMsg.value_of_css_property('display') == 'none':
+            if checkbox.value_of_css_property('display') == 'none':
                 print("\033[32m"+"Success"+"\033[0m")
             else:
                 raise Exception("Unable to solve the captcha")
