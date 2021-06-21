@@ -44,7 +44,7 @@ def on_message(ws, message):
 	if data["results"][0]["final"]:
 		global result
 		result = data["results"][0]["alternatives"][0]["transcript"]
-		print("Result: " + result)
+		print("Result: " + "\033[33m"+result+"\033[0m")
 		# This is an error...
 		ws.close()
 
