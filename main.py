@@ -71,9 +71,10 @@ if audioBtnFound:
             if checkbox.value_of_css_property('display') == 'none':
                 print("\033[32m"+"Success"+"\033[0m")
             else:
-                 print("\033[31m"+"Failed"+"\033[0m")
+                print("\033[31m"+"Failed"+"\033[0m")
             break
     except Exception as e:
         print(e)
+        print("\033[31m"+"Failed"+"\033[0m")
 else:
     print('Button not found. This should not happen.')
