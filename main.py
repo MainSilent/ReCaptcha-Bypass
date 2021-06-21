@@ -84,4 +84,4 @@ if audioBtnFound:
 else:
     print('Button not found. This should not happen.')
 
-#driver.close()
+driver.close()
